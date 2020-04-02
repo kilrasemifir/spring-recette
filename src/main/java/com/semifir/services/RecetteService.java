@@ -43,4 +43,8 @@ public class RecetteService {
 		return this.repo.findAllByDuree(duree);
 	}
 	
+	public List<Recette> findAllByDuree(long min, long max){
+		return this.repo.findAllByDureeBetween(min, max);
+	}
+	
 }

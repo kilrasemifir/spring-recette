@@ -111,3 +111,38 @@ Dans le controller creer une methode findByNom avec l'annotation **@GetMapping("
 Faire de meme pour les champs:
 - duree
 - dificulte
+
+## Exercice 7:
+
+Creer une methode pour recuperer les recettes avec une fourchette de duree: deux methodes:
+
+1. Dans le repository
+
+Dans le repository ajouter une methode:
+```Java
+public List<Recette> findAllByDureeBetween(long min, long max);
+```
+
+Cette methode prend deux parametres et recupere toutes les recettes qui ont une duree comprise entre min et max.
+
+Creer une methode dans le service qui appel la methode du repository.
+
+Creer une methode dans me controller en methode GET et avec l'url "duree/min/{min}/max/{max}" et qui appel la methode du service en renvoyant la liste de recette.
+
+2. Creer une dans le service:
+```Java
+public List<Recette> findAllByDureeBetween(String duree){
+    if (duree.equal("RAPIDE"))
+        return this.repository.findAllByDureeBetween(0,20);
+    if (duree.equal("NORMAL"))
+        return this.repository.findAllByDureeBetween(20,60);
+    if (duree.equal("LONG"))
+        return this.repository.findAllByDureeBetween(60,2_000);
+}
+```
+
+Cette methode permet de chercher dans des plages horraires.
+
+Creer une methode dans le controller pour utiliser cette methode. Elle sera sur l'url "duree/plage/{duree}"
+
+

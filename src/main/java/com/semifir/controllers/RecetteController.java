@@ -51,4 +51,9 @@ public class RecetteController {
 	public List<Recette> findByduree(@PathVariable long duree){
 		return this.service.findAllByDuree(duree);
 	}
+	
+	@GetMapping("/duree/min/{min}/max/{max}")
+	public List<Recette> findByduree(@PathVariable long min, @PathVariable long max){
+		return this.service.findAllByDuree(min, max);
+	}
 }
