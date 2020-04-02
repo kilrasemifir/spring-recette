@@ -36,4 +36,9 @@ public class RecetteController {
 	public Recette findById(@PathVariable String id) {
 		return this.service.findById(id);
 	}
+	
+	@GetMapping("/nom/{nom}")
+	public List<Recette> findByNom(@PathVariable String nom){
+		return this.service.findByNom(nom);
+	}
 }

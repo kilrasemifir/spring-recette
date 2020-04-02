@@ -31,5 +31,8 @@ public class RecetteService {
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "L'id ("+id+") n'est pas valide");
 	}
 	
+	public List<Recette> findByNom(String nom){
+		return this.findByNom(nom);
+	}
 	
 }
