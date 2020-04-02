@@ -29,3 +29,5 @@ private String dificulte;
 ```
 
 Pour dire a spring que cette classe est destiné a la representé une entité de Mongo, il faut ajouter l'annotation **@Document** au dessus de la definition de la classe. Il faut aussi definir le champs qui servira d'id avec l'annotation **@Id**.
+
+Pour le fonctionnement de Spring, Il est necessaire d'ajouter les getters et les setters de notre models. Pour ce faire l'on peut utiliser l'annotation **@Data** de lombok.
