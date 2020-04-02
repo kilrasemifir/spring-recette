@@ -105,3 +105,9 @@ public List<Recette> findAllByNom(String nom);
 Dans le service creer une methode portant le meme nom, appelant la methode du repository et ayant le meme type de retour et le meme parametre.
 
 Dans le controller creer une methode findByNom avec l'annotation **@GetMapping("nom/{nom}")** qui appel la methode du service. Il devra utiliser le pathvariable de l'exercice presedant pour recuperer le nom de l'url.
+
+## Exercice 6:
+
+Faire de meme pour les champs:
+- duree
+- dificulte

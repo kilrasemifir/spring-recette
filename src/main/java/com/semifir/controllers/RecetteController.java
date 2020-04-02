@@ -41,4 +41,14 @@ public class RecetteController {
 	public List<Recette> findByNom(@PathVariable String nom){
 		return this.service.findByNom(nom);
 	}
+	
+	@GetMapping("/dificulte/{dificulte}")
+	public List<Recette> findByduree(@PathVariable String dificulte){
+		return this.service.findByDificulte(dificulte);
+	}
+	
+	@GetMapping("/duree/{duree}")
+	public List<Recette> findByduree(@PathVariable long duree){
+		return this.service.findAllByDuree(duree);
+	}
 }

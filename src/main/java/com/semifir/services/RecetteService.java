@@ -32,7 +32,15 @@ public class RecetteService {
 	}
 	
 	public List<Recette> findByNom(String nom){
-		return this.findByNom(nom);
+		return this.repo.findAllByNom(nom);
+	}
+	
+	public List<Recette> findByDificulte(String dificulte){
+		return this.repo.findAllByDificulte(dificulte);
+	}
+	
+	public List<Recette> findAllByDuree(long duree){
+		return this.repo.findAllByDuree(duree);
 	}
 	
 }
