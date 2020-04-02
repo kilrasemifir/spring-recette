@@ -92,3 +92,16 @@ Si l'optional est vide, alors l'id de notre recette n'est pas valide. Il faut al
 Le **@PathVariable** permet de recuperer une variable dans l'url. Ici la variable "id". il est important que le nom du parametre soit le meme que celui definie dans l'url.
 
 Changer la methode findById du service pour ajouter la gestion de l'erreur et renvoyer la recette sans l'optional. Faire les changement necessaire dans le controller.
+
+## Exercice 5:
+
+Ajoutons une recherche par nom de recette.
+
+Dans le Repository nous devons Creer une nouvelle methode pour chercher par nom... findAllByNom(String nom). FindAll permet de chercher sur toutes les recettes. By Nom permet de chercher par nom. Attention il est necessaire que recette (le model) possede un getter et un setter pour le champ chercher (ici nom). L'on commence toujour le nom du champ par une majuscule.
+```java
+public List<Recette> findAllByNom(String nom);
+```
+
+Dans le service creer une methode portant le meme nom, appelant la methode du repository et ayant le meme type de retour et le meme parametre.
+
+Dans le controller creer une methode findByNom avec l'annotation **@GetMapping("nom/{nom}")** qui appel la methode du service. Il devra utiliser le pathvariable de l'exercice presedant pour recuperer le nom de l'url.
