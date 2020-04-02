@@ -41,3 +41,54 @@ public Recette save(@RequestBody Recette entity){
 ```
 
 @GetMapping permet de definir la methode HTTP (ou le verbe HTTP) et l'utl qui lancera cette methode java. Ici la methode GET avec l'url "recettes/". @PostMapping("") fait de meme avec la methode POST.
+
+Ouvrir postman. Lancer une requete:
+```HTTP
+GET localhost:8080/recettes
+```
+Si le server vous repond "[]" vous avec reussis a recuperer des informations de la base de donnée.
+
+faite la requete suivante:
+```HTTP
+POST localhost:8080/recettes
+```
+avec comme body (Dans le panel de requete, Body->raw et Text->JON)
+```JSON
+{
+    "nom":"ma recette",
+    "duree":100,
+    "dificulte":"FACILE"
+}
+```
+Le serveur devrai vous renvoyer l'object en generant le champ id.
+
+Exercice 4:
+
+Ajoutons d'autres methodes.
+
+Dans le service ajouter une methode findById qui prend en parametre String id et qui renvoie "Optional<Recette>". Elle renvera le retour de la methode findById du repository. 
+
+Dans le controller, ajouter une methode findById:
+```java
+@GetMapping("{id}")
+public Optional<Recette> findById(@PathVariable String id){
+    return this.service.findById(id);
+}
+```
+
+L'Optional contient la recette. Mais pour eviter d'avoir des exception (NullPointerException), le repository nous renvoie un optional qui encapsule la recette. Ainsi si l'id de la recette n'est pas le bon, il ne renvoie pas directement un null.
+
+Pour verifier s'il contient quelque chose, l'on utilise:
+```java
+if (optional.isPresent()){
+    Recette recette = optional.get();
+    // faire quelque chose avec la recette.
+} else {
+    throw new ResponseStatusException(HTTPStatus.NOT_FOUND, "L'id("+id+") de ka recette n'est pas valide.)");
+}
+```
+Si l'optional est vide, alors l'id de notre recette n'est pas valide. Il faut alors informer les utilisateurs de notre serveur que l'id est mauvaise. Pour ce faire, l'on utilise le statu de reponse HTTP 404 grace a la leve d'exception ResponceStatusException en lui donnant en arguments le code d'erreur (NOT_FOUND) et le message.
+
+Le **@PathVariable** permet de recuperer une variable dans l'url. Ici la variable "id". il est important que le nom du parametre soit le meme que celui definie dans l'url.
+
+Changer la methode findById du service pour ajouter la gestion de l'erreur et renvoyer la recette sans l'optional. Faire les changement necessaire dans le controller.
