@@ -14,18 +14,30 @@ Chaque Exercices est sur une branche du repository git
 
 ## Exercice 1:
 
-Creer 4 packages dans le même package que l'application:
-- controllers
-- services
-- repositories
-- models
-  
-Dans le package model, creer une classe Recette avec les champs:
+Creer une interface **RecetteRepository** dans le package **repositories**. Etendre cette classe avec l'interface **MongoRepository<Recette,String>**
 ```java
-private String id;
-private String nom;
-private long duree;
-private String dificulte;
+    public interface RecetteRepository extends MongoRepository<Recette,String>{}
 ```
 
-Pour dire a spring que cette classe est destiné a la representé une entité de Mongo, il faut ajouter l'annotation **@Document** au dessus de la definition de la classe. Il faut aussi definir le champs qui servira d'id avec l'annotation **@Id**.
+Cette interface nous permettra de dialoguer avec la BDD Mongo.
+
+Creer une nouvelle classe **RecetteService** dans le package service. Cette classe nous permettra de realiser le code metier de l'application. Annoter cette classe par **@Service**
+
+Elle va avoir besoin d'un repository pour dialoguer avec la BDD. Pour ce faire l'on doit utiliser l'injection de dependance de Spring.
+
+Ajouter un champs:
+```Java
+@Autowired
+private RecetteRepository repo
+```
+
+L'annotation **@Autowired** permet de demander a spring de recuperer un recetteRepository deja fonctionnel.
+
+Creer une methode **findAll** qui retourne une liste de recette sans prendre de parametre. L'on utilisera la methode **findAll** du repository pour retourner la liste.
+```Java
+public List<Recette> findAll(){
+    return this.repo.findAll();
+}
+```
+
+Faire de même avec la methode **save** qui prend en parametre une recette et qui renvoie une recette. Elle appelera la methode **save(Recette)** du repository.
