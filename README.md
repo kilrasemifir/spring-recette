@@ -12,32 +12,32 @@ Chaque Exercices est sur une branche du repository git
 - STS4 avec Lombok
 - Connaissances minimum en JAVA (POO)
 
-## Exercice 1:
+## Exercice 3:
 
-Creer une interface **RecetteRepository** dans le package **repositories**. Etendre cette classe avec l'interface **MongoRepository<Recette,String>**
+Creer une classe **RecetteController**. Cette classe nous permettra de recuperer les requetes HTTPs et de renvoyer les reponse. Pour ce faire elle doit etre annoté des annotations:
+- @RestController: definie la classe comme un controller
+- @CrossOrigin: Evite des problemes de securités
+- @RequestMapping("recettes"): definie les urls pour atteindre le controllers doivent commencer par "recettes/"
+  
+Il nous faut le service. Pour ce faire tout comme pour le repository dans le service l'on peut utiliser l'injection de dependance de Spring.
+
+Ajouter un champs
 ```java
-    public interface RecetteRepository extends MongoRepository<Recette,String>{}
-```
-
-Cette interface nous permettra de dialoguer avec la BDD Mongo.
-
-Creer une nouvelle classe **RecetteService** dans le package service. Cette classe nous permettra de realiser le code metier de l'application. Annoter cette classe par **@Service**
-
-Elle va avoir besoin d'un repository pour dialoguer avec la BDD. Pour ce faire l'on doit utiliser l'injection de dependance de Spring.
-
-Ajouter un champs:
-```Java
 @Autowired
-private RecetteRepository repo
+private RecetteService service 
 ```
 
-L'annotation **@Autowired** permet de demander a spring de recuperer un recetteRepository deja fonctionnel.
-
-Creer une methode **findAll** qui retourne une liste de recette sans prendre de parametre. L'on utilisera la methode **findAll** du repository pour retourner la liste.
-```Java
+Creer les methodes:
+```java
+@GetMapping("")
 public List<Recette> findAll(){
-    return this.repo.findAll();
+    return this.service.findAll();
+}
+
+@PostMapping("")
+public Recette save(@RequestBody Recette entity){
+    return this.service.save(entity);
 }
 ```
 
-Faire de même avec la methode **save** qui prend en parametre une recette et qui renvoie une recette. Elle appelera la methode **save(Recette)** du repository.
+@GetMapping permet de definir la methode HTTP (ou le verbe HTTP) et l'utl qui lancera cette methode java. Ici la methode GET avec l'url "recettes/". @PostMapping("") fait de meme avec la methode POST.
