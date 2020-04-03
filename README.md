@@ -145,4 +145,36 @@ Cette methode permet de chercher dans des plages horraires.
 
 Creer une methode dans le controller pour utiliser cette methode. Elle sera sur l'url "duree/plage/{duree}"
 
+## Exercice 8
+
+Ajoutons des etapes a notre recette.
+
+Dans le package model ajouter une classe "Etape" definissant les champs:
+- String nom
+- String description
+
+Pas besoin de document. Mais penser a ajouter @Data pour avoir les getters et les setters.
+
+Ajouter une liste d'etapes portant le noms "etapes" dans votre classe recette.
+
+Essayer avec postman de poster l'objet suivant:
+```java
+{
+    "nom":"crepes",
+    "duree":20,
+    "dificulte":"FACILE",
+    "etapes":[
+        {
+            "nom":"preparation",
+            "description":"tout melanger"
+        },
+        {
+            "nom":"cuisson",
+            "desciption":"cuire dans une poele"
+        }
+    ]
+}
+```
+
+Les etapes sont des objects compris directement dans la recette. Si la recette est supprimer ils le sont aussi. on parle de collection d'etapes dans la classe recette.
 
