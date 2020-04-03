@@ -188,4 +188,25 @@ Creer un crud pour les ingredient avec les methode findAll save et findById.
 
 Dans postman poster un ingredient.
 
+## Exercice 10:
+
+Ajouter a votre classe recette une liste d'ingredients portant le nom ingredients. annoter la par "@DBref"
+
+Poster une recette avec une propriete ingredients qui prend une liste comportant un objet {"id":<id de votre ingredient>}.
+
+Pour creer une recette vous devez deja rentrer un ingredient deja en bdd.
+
+Pour changer cette fonctionnalité, aller dans le service des recette. Ajouter par injection le service des ingredients. Dans la methode save du service des recette, avant de sauvegarder dans la bdd votre recette, ajouter chaqu'un des ingredients a la bdd grace a la methodde save du service des ingredients.
+
+Dans ce cas, si l'ingredient ne possede pas d'id il sera ajouter a la bdd. Sinon il sera lier a un deja existant.
+
+## Exercice 11 :(Non corrigé)
+
+Ajouter les methodes pour ajouter un ingredient a la recette en recuperant l'id de la recette et l'id de l'ingredient. Dans le service recette, recuperer la recette grace a findById et recuperer l'ingredient grace a findById du service des ingredient.
+Ajouter la la list des ingredients l'ingredient.
+Sauvegarder la recette.
+
+Faire de meme avec les etapes en recuperant le body contenant l'etape a ajouter.
+
+Faire une methode pour chercher les recettes en fonction d'un ingredient.
 

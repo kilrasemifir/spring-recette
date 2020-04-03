@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.semifir.models.Ingredient;
 import com.semifir.models.Recette;
 import com.semifir.repositories.RecetteRepository;
 
@@ -16,12 +17,16 @@ public class RecetteService {
 
 	@Autowired
 	private RecetteRepository repo;
+	@Autowired
+	private IngredientService ingredientService;
 	
 	public List<Recette> findAll(){
 		return this.repo.findAll();
 	}
 	
 	public Recette save(Recette entity) {
+		for(Ingredient ingredient: entity.getIngredients())
+			this.ingredientService.save(ingredient);
 		return this.repo.save(entity);
 	}
 	
