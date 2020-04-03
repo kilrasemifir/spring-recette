@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.semifir.models.Etape;
+import com.semifir.models.Ingredient;
 import com.semifir.models.Recette;
 import com.semifir.services.RecetteService;
 
@@ -55,5 +57,20 @@ public class RecetteController {
 	@GetMapping("/duree/min/{min}/max/{max}")
 	public List<Recette> findByduree(@PathVariable long min, @PathVariable long max){
 		return this.service.findAllByDuree(min, max);
+	}
+	
+	@PostMapping("{rid}/ingredients/{iid}")
+	public Recette addIngredient(@PathVariable String rid, @PathVariable String iid) {
+		return this.service.addIngredient(rid, iid);
+	}
+	
+	@PostMapping("{id}/ingredients")
+	public Recette addIngredient(@PathVariable String id, @RequestBody Ingredient ingredient) {
+		return this.addIngredient(id, ingredient);
+	}
+	
+	@PostMapping("{id}/recettes")
+	public Recette addEtape(@PathVariable String id, @RequestBody Etape etape) {
+		return this.service.addEtape(id, etape);
 	}
 }
