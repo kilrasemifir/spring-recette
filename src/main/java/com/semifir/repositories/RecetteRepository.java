@@ -14,4 +14,5 @@ public interface RecetteRepository extends MongoRepository<Recette, String>{
 
 	public List<Recette> findAllByDureeBetween(long min, long max);
 	
+	public List<Recette> findAllByIngredientsId(String ingredient);
 }

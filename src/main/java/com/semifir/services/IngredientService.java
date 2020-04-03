@@ -31,4 +31,6 @@ public class IngredientService {
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "L'id ("+id+") de l'ingredient n'est pas valide");
 	}
 	
+	
+	
 }

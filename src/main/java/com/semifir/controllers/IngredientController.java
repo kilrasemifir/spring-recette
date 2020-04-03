@@ -15,7 +15,7 @@ import com.semifir.models.Ingredient;
 import com.semifir.services.IngredientService;
 
 @RestController
-@RequestMapping("ingreidents")
+@RequestMapping("ingredients")
 @CrossOrigin
 public class IngredientController {
 

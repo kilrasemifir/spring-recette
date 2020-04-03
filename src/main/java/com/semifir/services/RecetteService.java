@@ -80,4 +80,8 @@ public class RecetteService {
 		return this.save(recette);		
 	}
 	
+	public List<Recette> findByIngredient(String ingredient){
+		return this.repo.findAllByIngredientsId(ingredient);
+	}
+	
 }

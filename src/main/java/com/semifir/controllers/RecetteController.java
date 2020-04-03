@@ -66,11 +66,16 @@ public class RecetteController {
 	
 	@PostMapping("{id}/ingredients")
 	public Recette addIngredient(@PathVariable String id, @RequestBody Ingredient ingredient) {
-		return this.addIngredient(id, ingredient);
+		return this.service.addIngredient(id, ingredient);
 	}
 	
 	@PostMapping("{id}/recettes")
 	public Recette addEtape(@PathVariable String id, @RequestBody Etape etape) {
 		return this.service.addEtape(id, etape);
+	}
+	
+	@GetMapping("/ingredients/{iid}")
+	public List<Recette> findByIngredients(@PathVariable String iid){
+		return this.service.findByIngredient(iid);
 	}
 }
