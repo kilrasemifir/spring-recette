@@ -155,7 +155,7 @@ Dans le package model ajouter une classe "Etape" definissant les champs:
 
 Pas besoin de document. Mais penser a ajouter @Data pour avoir les getters et les setters.
 
-Ajouter une liste d'etapes portant le noms "etapes" dans votre classe recette.
+Ajouter une liste d'etapes portant le noms "etapes" dans votre classe recette. Initier la avec une arrayList.
 
 Essayer avec postman de poster l'objet suivant:
 ```java
@@ -177,4 +177,15 @@ Essayer avec postman de poster l'objet suivant:
 ```
 
 Les etapes sont des objects compris directement dans la recette. Si la recette est supprimer ils le sont aussi. on parle de collection d'etapes dans la classe recette.
+
+## Exercice 9:
+
+Creer un model Ingredient ayant un nom et un champ "String unit".
+
+Il devra aller dans la base de donnée. il faut donc l'annotation @Document et @Data. noublier pas d'ajouter un champs "@Id private String id;"
+
+Creer un crud pour les ingredient avec les methode findAll save et findById.
+
+Dans postman poster un ingredient.
+
 

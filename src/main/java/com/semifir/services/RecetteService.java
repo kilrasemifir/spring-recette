@@ -28,7 +28,7 @@ public class RecetteService {
 	public Recette findById(String id) {
 		Optional<Recette> optional =  this.repo.findById(id);
 		if (optional.isPresent()) return optional.get();
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "L'id ("+id+") n'est pas valide");
+		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "L'id ("+id+") de la recette n'est pas valide");
 	}
 	
 	public List<Recette> findByNom(String nom){
